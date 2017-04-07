@@ -1,0 +1,49 @@
+.header-warper{
+    background-color:white;
+    height: 4rem;
+    box-shadow: 0px 0px 8px 2px rgb(0,0,0.2);
+    width: 100%;
+    position: fixed;
+    .header{
+        margin: 0 auto;
+        height:4rem;
+        padding-left:1.5rem;
+        padding-right:1.5rem;
+        width: 1000px;
+        .logo {
+            line-height: 4rem;
+            font-size:1.5rem;
+            font-weight: 800;
+            color: $oc-yellow-3;
+            text-shadow: 0 0 2px $oc-yellow-7;
+            -moz-text-shadow: 0 0 2px $oc-yellow-7;
+            -webkit-text-shadow: 0 0 2px $oc-yellow-7;
+        }
+        .sidebar-button {
+            float: left; 
+            font-size: 1.6rem;
+            line-height: 4rem;
+            color: $oc-gray-7;
+            margin-right: 0.5rem;
+            //transition: all .4s;
+            cursor:pointer;
+            &:hover {
+                color: $oc-blue-6;
+            //    font-size:1.7rem;
+            }
+            @include media(">desktop"){
+                display:none;
+            }
+        }
+    }
+
+    @include media("<desktop"){
+        .header{
+            width:100%;
+        }
+    }
+}
+.header-spacer{
+    height:4rem;
+    width:100%;
+}

@@ -3,6 +3,12 @@ import * as header from 'redux/modules/base/header';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+
+import { default as Header } from 'components/Base/Header';
+import {default as MainRoute } from 'containers/routes/MainRoute';
+import {default as Profile } from 'containers/routes/Profile';
+
 class App extends Component {
 	state = {
 		value : 0
@@ -14,12 +20,14 @@ class App extends Component {
 	render() {
 		const { children } = this.props;
 		return (
-			<div>
-				<h1>한글 적기 테스트한글 테스트한글 적기 테스트</h1>
-				<h1>{this.state.value}</h1>
-				{children}
-				<button onClick={() => this.setState({value : this.state.value+1})  }>증가</button>
-			</div>
+			<Router>
+				<div>
+					<Header />
+					<Route path="/main" component={MainRoute}/>
+					<Route path="/profile" component={Profile}/>
+					{children}
+				</div>
+			</Router>
 		);
 	}
 }
