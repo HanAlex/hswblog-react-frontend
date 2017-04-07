@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import App from 'containers/App';
+import App from './App';
+import Routes from './Routes';
 
-const Root = ({store, history}) => {
+const Root = ({store}) => {
     return (
         <Provider store={store}>
-            <App/>
+            <Routes/>
         </Provider>
     );
 };
