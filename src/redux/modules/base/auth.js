@@ -15,11 +15,8 @@ const auth = (function(){
             return firebase.auth().signInWithPopup(provider);
         },
         facebook: () => {
-            const provider = new firebase.auth.GoogleAuthProvider();
-			provider.addScope('https://www.googleapis.com/auth/plus.login');
-            provider.setCustomParameters({
-			    'login_hint': 'user@example.com'
-            });
+            var provider = new firebase.auth.FacebookAuthProvider();
+            provider.addScope('user_birthday,public_profile,user_photos,email');
             return firebase.auth().signInWithPopup(provider);
         },
         github: () => {
