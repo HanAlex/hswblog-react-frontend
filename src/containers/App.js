@@ -9,8 +9,22 @@ import { default as Header } from 'components/Base/Header';
 import {default as MainRoute } from 'containers/routes/MainRoute';
 import {default as Profile } from 'containers/routes/Profile';
 import LoginModal from 'components/Login/LoginModal';
+import auth from 'redux/modules/base/auth';
 
 class App extends Component {
+
+	componentDidMount() {
+		auth.authStateChanged(
+			(firebaseUser) =>{
+				if(firebaseUser){
+					console.log("로그인완료", firebaseUser);
+				}else{
+					console.log("로그인 안됨");
+				}
+			}
+		)
+	}
+	
 	handleLoginModal = (() =>{
 		const {ModalActions} = this.props;
 		return{

@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import Dimmer from 'components/Common/Dimmer';
 import EyeCatchy from 'components/Common/EyeCatchy';
 import { Icon } from 'semantic-ui-react'
+import auth from 'redux/modules/base/auth';
 
 class LoginModal extends Component{
     state = {
@@ -33,9 +34,9 @@ class LoginModal extends Component{
                             <div className="cancel-btn" onClick={onHide}><Icon size="big" name="cancel" /></div>
                             <div className="login-header"><Icon name='user' size='large' />로그인</div>
                             <div className="login-body">
-                                <SocialLoginButton type="google" />
-                                <SocialLoginButton type="facebook" />
-                                <SocialLoginButton type="github" />
+                                <SocialLoginButton type="google" onClick={auth.google} />
+                                <SocialLoginButton type="facebook" onClick={auth.facebook} />
+                                <SocialLoginButton type="github" onClick={auth.github} />
                             </div>
                         </div>
                     </EyeCatchy>
@@ -49,7 +50,7 @@ class LoginModal extends Component{
 
 
 
-const SocialLoginButton = ({type}) =>{
+const SocialLoginButton = ({type, onClick}) =>{
     const text = {
         github: 'Github',
         google: 'Google',
@@ -63,7 +64,7 @@ const SocialLoginButton = ({type}) =>{
     }
 
     return (
-        <div className={`social-login-button ${type}`}><Icon size="big" name={`${icon[type]}`} /><b>{text[type]}</b> 계정으로 로그인 </div>
+        <div onClick={onClick} className={`social-login-button ${type}`}><Icon size="big" name={`${icon[type]}`} /><b>{text[type]}</b> 계정으로 로그인 </div>
     );
 };
 export default LoginModal

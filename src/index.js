@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//firebase
-import firebase from 'firebase';
-import firebaseConfig from '../config/firebase';
 
 //react-hot-loader
 import Root from 'containers/Root';
@@ -11,8 +8,6 @@ import { AppContainer } from 'react-hot-loader';
 
 // redux
 import configureStore from 'redux/configureStore';
-
-firebase.initializeApp(firebaseConfig);
 
 const store = configureStore( );
 const rootElement = document.getElementById('root');
