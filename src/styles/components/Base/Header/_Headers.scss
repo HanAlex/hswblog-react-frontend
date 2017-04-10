@@ -1,9 +1,10 @@
 .header-warper{
-    background-color:white;
+    background-color:#f2f2f2;
     height: 4rem;
     box-shadow: 0px 0px 8px 2px rgb(0,0,0.2);
     width: 100%;
     position: fixed;
+    z-index: $z-index-header;
     .header{
         margin: 0 auto;
         height:4rem;
@@ -14,10 +15,7 @@
             line-height: 4rem;
             font-size:1.5rem;
             font-weight: 800;
-            color: $oc-yellow-3;
-            text-shadow: 0 0 2px $oc-yellow-7;
-            -moz-text-shadow: 0 0 2px $oc-yellow-7;
-            -webkit-text-shadow: 0 0 2px $oc-yellow-7;
+            color: $oc-gray-8;
         }
         .sidebar-button {
             float: left; 
@@ -34,6 +32,10 @@
             @include media(">desktop"){
                 display:none;
             }
+        }
+        .loginButtonArea {
+            line-height: 4rem;
+            float:right;
         }
     }
 

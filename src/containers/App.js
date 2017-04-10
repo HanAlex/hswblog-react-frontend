@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { default as Header } from 'components/Base/Header';
 import {default as MainRoute } from 'containers/routes/MainRoute';
 import {default as Profile } from 'containers/routes/Profile';
+import LoginModal from 'components/Login/LoginModal';
 
 class App extends Component {
 	state = {
@@ -22,8 +23,9 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
+                	<LoginModal />
 					<Header />
-					<Route path="/main" component={MainRoute}/>
+					<Route exact path="/" component={MainRoute}/>
 					<Route path="/profile" component={Profile}/>
 					{children}
 				</div>
