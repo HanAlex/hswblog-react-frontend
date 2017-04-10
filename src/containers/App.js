@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import * as header from 'redux/modules/base/header';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import * as modal from 'redux/modules/base/modal';
 
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 
@@ -11,20 +11,26 @@ import {default as Profile } from 'containers/routes/Profile';
 import LoginModal from 'components/Login/LoginModal';
 
 class App extends Component {
-	state = {
-		value : 0
-	}
-	componentDidMount(){
-		const { HeaderActions } = this.props;
-		HeaderActions.example(false);
-	}
+	handleLoginModal = (() =>{
+		const {ModalActions} = this.props;
+		return{
+			open: ()=>{
+				ModalActions.openModal({modalName: 'login'});
+			},
+			close: () => {
+				ModalActions.closeModal('login');
+			}
+		}
+	})()
+
 	render() {
-		const { children } = this.props;
+		const { children, status:{modal} } = this.props;
+		const { handleLoginModal } = this;
 		return (
 			<Router>
 				<div>
-                	<LoginModal />
-					<Header />
+					<Header onClick={handleLoginModal.open} />
+                	<LoginModal visible={modal.getIn(['login', 'open'])}  onHide={handleLoginModal.close} />
 					<Route exact path="/" component={MainRoute}/>
 					<Route path="/profile" component={Profile}/>
 					{children}
@@ -37,10 +43,10 @@ class App extends Component {
 export default connect(
 	state => ({
 		status: {
-			something: state.base.header.get('something')
+			modal: state.base.modal
 		}
 	}),
 	dispatch => ({
-		HeaderActions: bindActionCreators(header, dispatch) 
+		ModalActions: bindActionCreators(modal, dispatch) 
 	})
 )(App);

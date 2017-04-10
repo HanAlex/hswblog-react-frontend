@@ -16,6 +16,38 @@
             font-size:1.5rem;
             font-weight: 800;
             color: $oc-gray-8;
+            display: inline-block;
+            user-select: none;
+        }
+        .login-btn-area{
+            float: right;
+            line-height: 4rem;
+            .auth-button {
+                Icon {
+                    margin-right: 0.5rem;
+                    font-size:2rem; 
+                }
+                display: inline-block;
+                position: relative;
+                background-color: $oc-gray-7;
+                color: white;
+                font-weight: bold;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding-top: 0.7rem;
+                padding-bottom: 0.7rem;
+                line-height: 1rem;
+                border-radius: 4px;
+                transition: background .3s;
+                cursor: pointer;
+                user-select: none;
+                &:hover {
+                    background: $oc-gray-8;
+                }
+                &:active{
+                    background: $oc-gray-9;
+                }
+            }
         }
         .sidebar-button {
             float: left; 
