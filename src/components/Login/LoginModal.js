@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import Dimmer from 'components/Common/Dimmer';
 import EyeCatchy from 'components/Common/EyeCatchy';
 import { Icon } from 'semantic-ui-react'
-import auth from 'redux/modules/base/auth';
+import auth from 'helpers/auth/auth';
 
 class LoginModal extends Component{
     state = {
