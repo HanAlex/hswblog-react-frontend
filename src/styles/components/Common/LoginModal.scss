@@ -84,7 +84,7 @@
             }
         }
         //애니메이션 설정
-        &.bounceOutDown, &.fadeInDown{
+        &.bounceIn, &.bounceOutDown{
             -webkit-animation-duration: 0.5s;
             animation-duration: 0.5s;
             -webkit-animation-fill-mode: both;

@@ -25,7 +25,7 @@ class LoginModal extends Component{
         const {visible, onHide} = this.props;
         const {closing} = this.state;
         if(!closing && !visible) return null;
-        const animaition = visible ? 'fadeInDown' : 'bounceOutDown';
+        const animaition = visible ? 'bounceIn' : 'bounceOutDown';
         return(
             <div>
                 <div className="login-modal-wrapper">
