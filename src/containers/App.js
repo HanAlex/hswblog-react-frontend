@@ -13,20 +13,6 @@ import {default as auth } from 'helpers/auth/auth';
 
 class App extends Component {
 
-	componentDidMount() {
-		auth.authStateChanged(
-			(firebaseUser) =>{
-				if(firebaseUser){
-					this.handleLoginModal.close();
-					this.setState({firebaseUser})
-					//console.log("로그인완료", firebaseUser);
-				}else{
-					//console.log("로그인 안됨");
-				}
-			}
-		)
-	}
-
 	handleLoginModal = (() =>{
 		const {ModalActions} = this.props;
 		return{
@@ -39,15 +25,22 @@ class App extends Component {
 		}
 	})()
 
+	MemeberController = (() =>{
+		return{
+			logout: (cb)=>{
+                auth.logout(cb);
+			}
+		}
+	})()
+
 	render() {
 		const { children, status:{modal} } = this.props;
-		const firebaseUser = this.state;
-		const { handleLoginModal } = this;
+		const { handleLoginModal, MemeberController } = this;
 		return (
 			<Router>
 				<div>
-                	<LoginModal visible={modal.getIn(['login', 'open'])} popClose={handleLoginModal} onHide={handleLoginModal.close} />
-					<Header onClick={handleLoginModal.open} userInfo={firebaseUser} />
+                	<LoginModal visible={modal.getIn(['login', 'open'])} onHide={handleLoginModal.close} />
+					<Header onClick={handleLoginModal.open} logoutEvent={MemeberController.logout} />
 					<Route exact path="/" component={MainRoute}/>
 					<Route path="/profile" component={Profile}/>
 					{children}

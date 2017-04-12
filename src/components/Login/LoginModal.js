@@ -22,7 +22,7 @@ class LoginModal extends Component{
     }
 
     handleAuth = (provider) =>{
-        this.props.popClose.close();
+        this.props.onHide();
         auth[provider]().catch(
             error =>{
                 
