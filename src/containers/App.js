@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as modal from 'redux/modules/base/modal';
+import * as header from 'redux/modules/base/header';
 
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 
@@ -25,6 +26,18 @@ class App extends Component {
 		}
 	})()
 
+	handleHeaderMenu = (() =>{
+		const {HeaderActions} = this.props;
+		return{
+			open: ()=>{
+				HeaderActions.openUserMenu({actionName: 'userMenu'});
+			},
+			close: () => {
+				HeaderActions.closeUserMenu('userMenu');
+			}
+		}
+	})()
+
 	MemeberController = (() =>{
 		return{
 			logout: (cb)=>{
@@ -34,13 +47,18 @@ class App extends Component {
 	})()
 
 	render() {
-		const { children, status:{modal} } = this.props;
-		const { handleLoginModal, MemeberController } = this;
+		const { children, status:{modal,header} } = this.props;
+		const { handleLoginModal, MemeberController, handleHeaderMenu } = this;
 		return (
 			<Router>
 				<div>
                 	<LoginModal visible={modal.getIn(['login', 'open'])} onHide={handleLoginModal.close} />
-					<Header onClick={handleLoginModal.open} logoutEvent={MemeberController.logout} />
+					<Header 
+						visible={header.getIn(['userMenu', 'open'])} // header Menu 열/닫기
+						onClick={handleLoginModal.open} // 로그인 창 열기
+						userMenuEvent={handleHeaderMenu} 
+						logoutEvent={MemeberController.logout} 
+					/>
 					<Route exact path="/" component={MainRoute}/>
 					<Route path="/profile" component={Profile}/>
 					{children}
@@ -53,10 +71,12 @@ class App extends Component {
 export default connect(
 	state => ({
 		status: {
-			modal: state.base.modal
+			modal: state.base.modal,
+			header: state.base.header
 		}
 	}),
 	dispatch => ({
-		ModalActions: bindActionCreators(modal, dispatch) 
+		ModalActions: bindActionCreators(modal, dispatch),
+		HeaderActions: bindActionCreators(header, dispatch) 
 	})
 )(App);

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 import {default as auth } from 'helpers/auth/auth';
 
+import EyeCatchy from 'components/Common/EyeCatchy';
+
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -33,14 +35,14 @@ class Header extends Component {
 
     render() {
         const {handleAuthLogout} = this;
-        const {onClick} = this.props;
+        const {onClick, userMenuEvent, visible} = this.props;
         return (
             <div>
                 <div className="header-warper"> 
                     <div className="header">    
                         <div className="sidebar-button"><Icon name="sidebar" /></div>
                         <div className="logo">Test Site</div>
-                        <UserInfoArea  logoutEvent={handleAuthLogout} onClick={onClick} userInfo={this.state.userInfo} />
+                        <UserInfoArea visible={visible} userMenuEvent={userMenuEvent} logoutEvent={handleAuthLogout} onClick={onClick} userInfo={this.state.userInfo} />
                     </div>
                 </div>
                 <div className="header-spacer"></div>
@@ -51,16 +53,12 @@ class Header extends Component {
 }
 
 //
-const UserInfoArea = ({onClick, userInfo,logoutEvent}) => {
+const UserInfoArea = ({onClick, userInfo, logoutEvent, userMenuEvent, visible}) => {
     if (userInfo) {
         return (
             <div className="user-info-area">
-                <div className="photo-area"><img src={userInfo.photoURL}/></div>
-                <div className="user-menu-area">
-                    <div className="menu-list">
-                        <div className="menu-item" onClick={logoutEvent}>로그아웃</div>
-                    </div>
-                </div>
+                <div className="photo-area" onClick={userMenuEvent.open}><img src={userInfo.photoURL}/></div>
+                <UserLoginStatus logoutEvent={logoutEvent} userMenuEvent={userMenuEvent} visible={visible}/>
             </div>
         );
     }else{
@@ -69,5 +67,22 @@ const UserInfoArea = ({onClick, userInfo,logoutEvent}) => {
         );
     }
 };
+
+class UserLoginStatus extends Component {
+    render(){
+        const {logoutEvent, userMenuEvent, visible} = this.props;
+        if(!visible) return null;
+        return (
+            <EyeCatchy onHide={userMenuEvent.close} >
+            <div className="user-menu-area">
+                    <div className="menu-list">
+                        <div className="menu-item" onClick={logoutEvent}><Icon name="sign out" />로그아웃</div>
+                    </div>
+                </div>
+            </EyeCatchy>
+        );
+    }
+    
+}
 
 export default Header;

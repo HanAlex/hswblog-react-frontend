@@ -2,18 +2,25 @@ import { createAction, handleActions } from 'redux-actions';
 import { Map } from 'immutable';
 
 /* actions */
-const EXAMPLE = "base/header/EXMPLE";
+const USER_MENU_OPEN = "base/header/USER_MENU_OPEN";
+const USER_MENU_CLOSE = "base/header/USER_MENU_CLOSE";
 
 /* action creators */
-export const example = createAction(EXAMPLE);
+export const openUserMenu = createAction(USER_MENU_OPEN);
+export const closeUserMenu = createAction(USER_MENU_CLOSE);
 
 /* initialState */
 const initialState = Map({
-    someting: true
+    userMenu: Map({
+        open: false
+    })
 });
 
 export default handleActions({
-    [EXAMPLE] : (state, action) => (
-        state.set('someting', action.payload)
+    [USER_MENU_OPEN] : (state, action) => (
+        state.setIn(['userMenu', 'open'], true)
+    ),
+    [USER_MENU_CLOSE] : (state, action) => (
+        state.setIn(['userMenu', 'open'], false)
     )
 }, initialState);
