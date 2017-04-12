@@ -18,6 +18,7 @@ class App extends Component {
 			(firebaseUser) =>{
 				if(firebaseUser){
 					this.handleLoginModal.close();
+					this.setState({firebaseUser})
 					console.log("로그인완료", firebaseUser);
 				}else{
 					console.log("로그인 안됨");
@@ -40,12 +41,13 @@ class App extends Component {
 
 	render() {
 		const { children, status:{modal} } = this.props;
+		const firebaseUser = this.state;
 		const { handleLoginModal } = this;
 		return (
 			<Router>
 				<div>
-                	<LoginModal visible={modal.getIn(['login', 'open'])}  onHide={handleLoginModal.close} />
-					<Header onClick={handleLoginModal.open} />
+                	<LoginModal visible={modal.getIn(['login', 'open'])} popClose={handleLoginModal} onHide={handleLoginModal.close} />
+					<Header onClick={handleLoginModal.open} userInfo={firebaseUser} />
 					<Route exact path="/" component={MainRoute}/>
 					<Route path="/profile" component={Profile}/>
 					{children}

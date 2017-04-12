@@ -22,10 +22,12 @@ class LoginModal extends Component{
     }
 
     handleAuth = (provider) =>{
-       auth[provider]().catch(
-        error =>{
-        }  
-       );
+        this.props.popClose.close();
+        auth[provider]().catch(
+            error =>{
+                
+            }  
+        );
     }
 
     render(){
