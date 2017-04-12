@@ -21,7 +21,15 @@ class LoginModal extends Component{
         }
     }
 
+    handleAuth = (provider) =>{
+       auth[provider]().catch(
+        error =>{
+        }  
+       );
+    }
+
     render(){
+        const {handleAuth} = this;
         const {visible, onHide} = this.props;
         const {closing} = this.state;
         if(!closing && !visible) return null;
@@ -34,9 +42,9 @@ class LoginModal extends Component{
                             <div className="cancel-btn" onClick={onHide}><Icon size="big" name="cancel" /></div>
                             <div className="login-header"><Icon name='user' size='large' />로그인</div>
                             <div className="login-body">
-                                <SocialLoginButton type="google" onClick={auth.google} />
-                                <SocialLoginButton type="facebook" onClick={auth.facebook} />
-                                <SocialLoginButton type="github" onClick={auth.github} />
+                                <SocialLoginButton type="google" onClick={() => handleAuth('google')} />
+                                <SocialLoginButton type="facebook" onClick={() => handleAuth('facebook')} />
+                                <SocialLoginButton type="github" onClick={() => handleAuth('github')} />
                             </div>
                         </div>
                     </EyeCatchy>

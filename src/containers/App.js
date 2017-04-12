@@ -44,8 +44,8 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
-					<Header onClick={handleLoginModal.open} />
                 	<LoginModal visible={modal.getIn(['login', 'open'])}  onHide={handleLoginModal.close} />
+					<Header onClick={handleLoginModal.open} />
 					<Route exact path="/" component={MainRoute}/>
 					<Route path="/profile" component={Profile}/>
 					{children}
