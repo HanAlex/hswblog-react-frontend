@@ -38,26 +38,27 @@ class App extends Component {
 		}
 	})()
 
-	MemeberController = (() =>{
+	handleMemeberLogout = (() =>{
 		return{
 			logout: (cb)=>{
                 auth.logout(cb);
+				this.handleHeaderMenu.close();
 			}
 		}
 	})()
 
 	render() {
 		const { children, status:{modal,header} } = this.props;
-		const { handleLoginModal, MemeberController, handleHeaderMenu } = this;
+		const { handleLoginModal, handleMemeberLogout, handleHeaderMenu } = this;
 		return (
 			<Router>
 				<div>
                 	<LoginModal visible={modal.getIn(['login', 'open'])} onHide={handleLoginModal.close} />
 					<Header 
 						visible={header.getIn(['userMenu', 'open'])} // header Menu 열/닫기
-						onClick={handleLoginModal.open} // 로그인 창 열기
+						loginEvent={handleLoginModal} // 로그인 창 열기
 						userMenuEvent={handleHeaderMenu} 
-						logoutEvent={MemeberController.logout} 
+						logoutEvent={handleMemeberLogout} 
 					/>
 					<Route exact path="/" component={MainRoute}/>
 					<Route path="/profile" component={Profile}/>

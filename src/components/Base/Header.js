@@ -25,7 +25,7 @@ class Header extends Component {
     }
 
     handleAuthLogout = (provider) =>{
-        this.props.logoutEvent(function(){
+        this.props.logoutEvent.logout(function(){
             alert("로그아웃 되었습니다.");
         });
         this.setState({
@@ -35,14 +35,14 @@ class Header extends Component {
 
     render() {
         const {handleAuthLogout} = this;
-        const {onClick, userMenuEvent, visible} = this.props;
+        const {loginEvent, userMenuEvent, visible} = this.props;
         return (
             <div>
                 <div className="header-warper"> 
                     <div className="header">    
                         <div className="sidebar-button"><Icon name="sidebar" /></div>
                         <div className="logo">Test Site</div>
-                        <UserInfoArea visible={visible} userMenuEvent={userMenuEvent} logoutEvent={handleAuthLogout} onClick={onClick} userInfo={this.state.userInfo} />
+                        <UserInfoArea visible={visible} userMenuEvent={userMenuEvent} logoutEvent={handleAuthLogout} loginEvent={loginEvent} userInfo={this.state.userInfo} />
                     </div>
                 </div>
                 <div className="header-spacer"></div>
@@ -53,7 +53,7 @@ class Header extends Component {
 }
 
 //
-const UserInfoArea = ({onClick, userInfo, logoutEvent, userMenuEvent, visible}) => {
+const UserInfoArea = ({loginEvent, userInfo, logoutEvent, userMenuEvent, visible}) => {
     if (userInfo) {
         return (
             <div className="user-info-area">
@@ -63,7 +63,7 @@ const UserInfoArea = ({onClick, userInfo, logoutEvent, userMenuEvent, visible}) 
         );
     }else{
         return (
-            <div className="login-btn-area" onClick={onClick} ><div className="auth-button"><Icon name="user" />로그인</div></div>
+            <div className="login-btn-area" onClick={loginEvent.open} ><div className="auth-button"><Icon name="user" />로그인</div></div>
         );
     }
 };
