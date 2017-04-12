@@ -19,9 +19,9 @@ class App extends Component {
 				if(firebaseUser){
 					this.handleLoginModal.close();
 					this.setState({firebaseUser})
-					console.log("로그인완료", firebaseUser);
+					//console.log("로그인완료", firebaseUser);
 				}else{
-					console.log("로그인 안됨");
+					//console.log("로그인 안됨");
 				}
 			}
 		)
