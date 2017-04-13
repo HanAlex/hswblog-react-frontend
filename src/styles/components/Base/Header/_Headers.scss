@@ -87,8 +87,8 @@
                 }
             }
             .user-menu-area{
-                z-index: $z-index-tooltip;
                 .menu-list{
+                    z-index: $z-index-tooltip;
                     position: absolute;
                     top:4.2rem;
                     left:-5.1rem;

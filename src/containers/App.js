@@ -13,30 +13,7 @@ import {default as MainRoute } from 'containers/routes/MainRoute';
 import {default as Profile } from 'containers/routes/Profile';
 
 import LoginModal from 'components/Login/LoginModal';
-import firebase from 'firebase';
 class App extends Component {
-	constructor(props){
-		super(props);
-
-        console.log('11'+firebase.auth().currentUser);
-	}
-	componentWillReceiveProps(nextProps) {
-		
-        console.log('22'+firebase.auth().currentUser);
-	}
-	
-	 componentWillMount() {
-		 
-        console.log('33'+firebase.auth().currentUser);
-	 }
-	componentWillMount(){
-        console.log('44'+firebase.auth().currentUser);
-		
-	}
-	componentWillReceiveProps(){
-
-        console.log('66'+firebase.auth().currentUser);
-	}
 	handleLoginModal = (() =>{
 		const {ModalActions} = this.props;
 		return{
@@ -76,8 +53,6 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
-				{
-        console.log('55'+auth.currentUser())}
                 	<LoginModal visible={modal.getIn(['login', 'open'])} onHide={handleLoginModal.close} />
 					<Header 
 						visible={header.getIn(['userMenu', 'open'])} // header Menu 열/닫기

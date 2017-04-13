@@ -1,0 +1,19 @@
+.left-area{
+    position: fixed;
+    padding:0.5rem;
+    width:17rem;
+    height:3rem;
+    display: inline-block;
+    z-index:$z-index-side-menu;
+    @include media("<desktop"){
+        display:none;
+    }
+    .menu-title{
+        font-size:1.2rem;
+    }
+    .menu-list{
+        .menu-item{
+            background:#444;
+        }
+    }
+}
