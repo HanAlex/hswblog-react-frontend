@@ -43,7 +43,7 @@ class Header extends Component {
                 <div className="header-warper"> 
                     <div className="header">    
                         <div className="sidebar-button"><Icon name="sidebar" /></div>
-                        <div className="logo">Test Site</div>
+                        <div className="logo">Han's Veloper</div>
                         <UserInfoArea visible={visible} userMenuEvent={userMenuEvent} logoutEvent={handleAuthLogout} loginEvent={loginEvent} userInfo={this.state.userInfo} />
                     </div>
                 </div>
