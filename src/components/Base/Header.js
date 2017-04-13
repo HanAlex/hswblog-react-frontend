@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Icon } from 'semantic-ui-react';
 import {default as auth } from 'helpers/auth/auth';
 
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 import EyeCatchy from 'components/Common/EyeCatchy';
 
 class Header extends Component {
@@ -71,15 +73,31 @@ const UserInfoArea = ({loginEvent, userInfo, logoutEvent, userMenuEvent, visible
 class UserLoginStatus extends Component {
     render(){
         const {logoutEvent, userMenuEvent, visible} = this.props;
-        if(!visible) return null;
         return (
-            <EyeCatchy onHide={userMenuEvent.close} >
-            <div className="user-menu-area">
-                    <div className="menu-list">
-                        <div className="menu-item" onClick={logoutEvent}><Icon name="sign out" />로그아웃</div>
-                    </div>
-                </div>
-            </EyeCatchy>
+            <div>
+            <ReactCSSTransitionGroup
+                transitionName={
+                    {
+                        enter : 'flipInY',
+                        leave : 'flipOutY'
+                    }
+                }
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={500}
+            >
+            {
+                visible &&(
+                    <EyeCatchy onHide={userMenuEvent.close} >
+                    <div className="user-menu-area">
+                            <div className="menu-list">
+                                <div className="menu-item" onClick={logoutEvent}><Icon name="sign out" />로그아웃</div>
+                            </div>
+                        </div>
+                    </EyeCatchy>
+                )
+            }
+            </ReactCSSTransitionGroup>
+            </div>
         );
     }
     

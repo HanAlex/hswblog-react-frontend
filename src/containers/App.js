@@ -1,19 +1,42 @@
 import React, { Component } from 'react';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as modal from 'redux/modules/base/modal';
 import * as header from 'redux/modules/base/header';
+import * as modal from 'redux/modules/base/modal';
 
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 
-import { default as Header } from 'components/Base/Header';
+import {default as auth } from 'helpers/auth/auth';
+import {default as Header } from 'components/Base/Header';
 import {default as MainRoute } from 'containers/routes/MainRoute';
 import {default as Profile } from 'containers/routes/Profile';
+
 import LoginModal from 'components/Login/LoginModal';
-import {default as auth } from 'helpers/auth/auth';
-
+import firebase from 'firebase';
 class App extends Component {
+	constructor(props){
+		super(props);
 
+        console.log('11'+firebase.auth().currentUser);
+	}
+	componentWillReceiveProps(nextProps) {
+		
+        console.log('22'+firebase.auth().currentUser);
+	}
+	
+	 componentWillMount() {
+		 
+        console.log('33'+firebase.auth().currentUser);
+	 }
+	componentWillMount(){
+        console.log('44'+firebase.auth().currentUser);
+		
+	}
+	componentWillReceiveProps(){
+
+        console.log('66'+firebase.auth().currentUser);
+	}
 	handleLoginModal = (() =>{
 		const {ModalActions} = this.props;
 		return{
@@ -53,6 +76,8 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
+				{
+        console.log('55'+auth.currentUser())}
                 	<LoginModal visible={modal.getIn(['login', 'open'])} onHide={handleLoginModal.close} />
 					<Header 
 						visible={header.getIn(['userMenu', 'open'])} // header Menu 열/닫기

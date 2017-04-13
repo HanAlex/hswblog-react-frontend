@@ -1,6 +1,5 @@
 //firebase
 import firebase from 'firebase';
-import * as modal from 'redux/modules/base/modal';
 import firebaseConfig from '../../../config/firebase';
 
 firebase.initializeApp(firebaseConfig);
