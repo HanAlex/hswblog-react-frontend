@@ -12,7 +12,7 @@ export const closeUserMenu = createAction(USER_MENU_CLOSE);
 /* initialState */
 const initialState = Map({
     userMenu: Map({
-        open: true
+        open: false
     })
 });
 
