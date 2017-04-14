@@ -8,8 +8,6 @@ const MainContent = () => {
                 <div className="write-header">
                     <div className="btn-area">
                     <a className="write-btn"><Icon name="write" /><span>글쓰기</span></a>
-                    <a className="write-btn"><Icon name="write" /><span>글쓰기</span></a>
-                    <a className="write-btn"><Icon name="write" /><span>글쓰기</span></a>
                     </div>
                 </div>
                 <div className="write-content">
