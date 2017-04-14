@@ -1,7 +1,7 @@
 .header-warper{
-    background-color:#f2f2f2;
+    background-color:#fff;
     height: 4rem;
-    box-shadow: 0px 0px 8px 2px rgb(0,0,0.2);
+    box-shadow:0 2px 4px rgba(0,0,0,.14);
     width: 100%;
     position: fixed;
     z-index: $z-index-header;
@@ -18,6 +18,7 @@
             color: $oc-gray-8;
             display: inline-block;
             user-select: none;
+            color: #5CAD74;
         }
         .login-btn-area{
             float: right;
@@ -29,7 +30,7 @@
                 }
                 display: inline-block;
                 position: relative;
-                background-color: $oc-gray-7;
+                background-color: #5CAD74;
                 color: white;
                 font-weight: bold;
                 padding-left: 1rem;
@@ -42,10 +43,10 @@
                 cursor: pointer;
                 user-select: none;
                 &:hover {
-                    background: $oc-gray-8;
+                    background: #4a8b5e;
                 }
                 &:active{
-                    background: $oc-gray-9;
+                    background: #417b52;
                 }
             }
         }
