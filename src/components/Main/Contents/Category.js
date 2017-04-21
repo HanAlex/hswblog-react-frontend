@@ -9,7 +9,7 @@ const Category = () => {
             <div className="category-conent">
                 <div className="category-left-area">
                     <img className="icon" src={reactIcon} />
-                    <span>React</span>
+                    <span>ReactJs</span>
                 </div>
                 <div className="category-right-area">
                     <Icon name="search"/>

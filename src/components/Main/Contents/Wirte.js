@@ -6,11 +6,11 @@ const Wirte = () => {
         <div className="write-area">
             <div className="write-header">
                 <div className="btn-area">
-                <a className="write-btn"><Icon name="write" /><span>글쓰기</span></a>
+                <a className="write-btn"><Icon name="write" /><span>Writing</span></a>
                 </div>
             </div>
             <div className="write-content">
-                <p className="desctiption">글쓰기 영역</p>
+                <p className="desctiption">Writing area</p>
             </div>
         </div>
     );

@@ -61,8 +61,8 @@ class App extends Component {
 						userMenuEvent={handleHeaderMenu} 
 						logoutEvent={handleMemeberLogout} 
 					/>
-					<Route exact path="/" component={Profile}/>
-					<Route path="/guest" component={MainRoute}/>
+					<Route exact path="/" component={MainRoute}/>
+					<Route path="/guest" component={Profile}/>
 					{children}
 				</div>
 			</Router>

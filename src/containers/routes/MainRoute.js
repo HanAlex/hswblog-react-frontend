@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as header from 'redux/modules/base/header';
 import * as modal from 'redux/modules/base/modal';
 
-import LeftArea from 'components/Main/LeftArea';
+import LeftArea from 'components/Main/LeftArea/LeftArea';
 import RightArea from 'components/Main/RightArea';
 import MainContent from 'components/Main/MainContent';
 class MainRoute extends Component {
