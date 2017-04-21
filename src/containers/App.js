@@ -7,12 +7,13 @@ import * as modal from 'redux/modules/base/modal';
 
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 
-import {default as auth } from 'helpers/auth/auth';
-import {default as Header } from 'components/Base/Header';
 import {default as MainRoute } from 'containers/routes/MainRoute';
 import {default as Profile } from 'containers/routes/Profile';
 
 import LoginModal from 'components/Login/LoginModal';
+
+import {default as auth } from 'helpers/auth/auth';
+import {default as Header } from 'components/Base/Header';
 class App extends Component {
 	handleLoginModal = (() =>{
 		const {ModalActions} = this.props;
@@ -24,8 +25,8 @@ class App extends Component {
 				ModalActions.closeModal('login');
 			}
 		}
-	})()
-
+	})() 
+    
 	handleHeaderMenu = (() =>{
 		const {HeaderActions} = this.props;
 		return{
@@ -37,7 +38,7 @@ class App extends Component {
 			}
 		}
 	})()
-
+	
 	handleMemeberLogout = (() =>{
 		return{
 			logout: (cb)=>{
@@ -46,10 +47,10 @@ class App extends Component {
 			}
 		}
 	})()
-
 	render() {
-		const { children, status:{modal,header} } = this.props;
+		const { status:{header} } = this.props;
 		const { handleLoginModal, handleMemeberLogout, handleHeaderMenu } = this;
+		const { children, status:{modal} } = this.props;
 		return (
 			<Router>
 				<div>
@@ -60,8 +61,8 @@ class App extends Component {
 						userMenuEvent={handleHeaderMenu} 
 						logoutEvent={handleMemeberLogout} 
 					/>
-					<Route exact path="/" component={MainRoute}/>
-					<Route path="/profile" component={Profile}/>
+					<Route exact path="/" component={Profile}/>
+					<Route path="/guest" component={MainRoute}/>
 					{children}
 				</div>
 			</Router>
