@@ -51,7 +51,7 @@ class LoginModal extends Component{
                         </div>
                     </EyeCatchy>
                 </div>
-                <Dimmer />
+                <Dimmer viewFlag={true}/>
             </div>
         )
     }

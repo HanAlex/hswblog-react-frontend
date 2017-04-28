@@ -11,7 +11,7 @@ const ContentItem = () => {
                 <div className="summary">
                     Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary Summary
                 </div>
-                <div className="content">Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content </div>
+                <div className="content">Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content </div>
             </div>
         </div>
     );
