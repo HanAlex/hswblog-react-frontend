@@ -25,7 +25,7 @@ class App extends Component {
 				ModalActions.closeModal('login');
 			}
 		}
-	})() 
+	})()
     
 	handleHeaderMenu = (() =>{
 		const {HeaderActions} = this.props;

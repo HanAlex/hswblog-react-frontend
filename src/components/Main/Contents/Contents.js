@@ -10,10 +10,6 @@ const Contents = () => {
             <ContentItem />
             <ContentItem />
             <ContentItem />
-            <ContentItem />
-            <ContentItem />
-            <ContentItem />
-            <ContentItem />
         </div>
     );
 };

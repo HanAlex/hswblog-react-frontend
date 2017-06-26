@@ -65,10 +65,29 @@
     .write-content{
         height:100%;
         .desctiption{
-            padding-left:2rem;
-            color: $font-color-hint;
-            line-height: 5rem;
             display:none;
+            .preview-btn{
+                display: inline-block;
+                background-color: #89b6e3;
+                color: white;
+                font-weight: bold;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding-top: 0.7rem;
+                padding-bottom: 0.7rem;
+                line-height: 1rem;
+                border-radius: 4px;
+                transition: background .3s;
+                cursor: pointer;
+                user-select: none;
+                float:right;
+                &:hover {
+                    background: #62a0df;
+                }
+                &:active{
+                    background: #3781cc;
+                }
+            }
         }
         .title-input {
             height: 3rem;
@@ -98,7 +117,7 @@
         top:5rem;
         z-index:$z-index-wirte;
         position:fixed;
-        transition: all .2s ease-in-out;
+        // transition: all .2s ease-in-out;
         width:80%;
         @include media("<desktop"){
             height: 100vh;
